@@ -31,6 +31,13 @@ public class BookService {
                 .orElseThrow(() -> new RuntimeException("Libro no encontrado con el ID: " + id));
         return convertToDTO(book);
     }
+    // Busqueda por title
+    public List<BookDTO> getBooksByTitle(String title) {
+        return bookRepository.findByTitleContainingIgnoreCase(title)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
 
     public BookDTO createBook(BookDTO dto) {
         Book book = convertToEntity(dto);

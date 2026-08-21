@@ -26,6 +26,16 @@ public class BookController {
         return ResponseEntity.ok(bookService.getAllBooks());
     }
 
+    // GET /api/books/search/{title}
+    @GetMapping("/search/{title}")
+    public ResponseEntity<List<BookDTO>> getBooksByTitle(
+            @PathVariable String title) {
+
+        return ResponseEntity.ok(
+                bookService.getBooksByTitle(title)
+        );
+    }
+
     // GET /api/books/{id} - Obtener libro por ID
     @GetMapping("/{id}")
     public ResponseEntity<BookDTO> getBookById(@PathVariable String id) {
