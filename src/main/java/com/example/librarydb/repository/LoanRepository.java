@@ -9,6 +9,9 @@ import java.util.List;
 @Repository
 public interface LoanRepository extends MongoRepository<Loan, String> {
 
-    // BUENA PRÁCTICA: Permite consultar eficientemente todos los prestamos historicos vinculados a un bookId
+    // Buscar todos los préstamos de un libro
     List<Loan> findByBookId(String bookId);
+
+    // Buscar todos los préstamos de un usuario
+    List<Loan> findByIduser(String iduser);
 }

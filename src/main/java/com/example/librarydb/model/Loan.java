@@ -3,46 +3,85 @@ package com.example.librarydb.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDate;
 
-// Mapea la clase a la coleccion "loans" en MongoDB
+// Mapea la clase a la colección "loans" en MongoDB
 @Document(collection = "loans")
 public class Loan {
 
     @Id
     private String id;
 
-    // BUENA PRÁCTICA: Guardar el ID plano de Book en vez de usar @DBRef.
-    // @Indexed crea un indice secundario en MongoDB para agilizar la busqueda findByBookId()
+    // ID del libro asociado al préstamo
+    // @Indexed agiliza las búsquedas por bookId
     @Indexed
     private String bookId;
 
-    private String userName;
+    // ID del usuario que realiza el préstamo
+    // Se almacena el ID plano en lugar de utilizar @DBRef
+    // @Indexed agiliza las búsquedas por iduser
+    @Indexed
+    private String iduser;
+
     private LocalDate loanDate;
+
     private LocalDate returnDate;
 
-    public Loan() {}
+    public Loan() {
+    }
 
-    public Loan(String id, String bookId, String userName, LocalDate loanDate, LocalDate returnDate) {
+    public Loan(
+            String id,
+            String bookId,
+            String iduser,
+            LocalDate loanDate,
+            LocalDate returnDate) {
+
         this.id = id;
         this.bookId = bookId;
-        this.userName = userName;
+        this.iduser = iduser;
         this.loanDate = loanDate;
         this.returnDate = returnDate;
     }
 
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
+    public String getId() {
+        return id;
+    }
 
-    public String getBookId() { return bookId; }
-    public void setBookId(String bookId) { this.bookId = bookId; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getUserName() { return userName; }
-    public void setUserName(String userName) { this.userName = userName; }
+    public String getBookId() {
+        return bookId;
+    }
 
-    public LocalDate getLoanDate() { return loanDate; }
-    public void setLoanDate(LocalDate loanDate) { this.loanDate = loanDate; }
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
+    }
 
-    public LocalDate getReturnDate() { return returnDate; }
-    public void setReturnDate(LocalDate returnDate) { this.returnDate = returnDate; }
+    public String getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(String iduser) {
+        this.iduser = iduser;
+    }
+
+    public LocalDate getLoanDate() {
+        return loanDate;
+    }
+
+    public void setLoanDate(LocalDate loanDate) {
+        this.loanDate = loanDate;
+    }
+
+    public LocalDate getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(LocalDate returnDate) {
+        this.returnDate = returnDate;
+    }
 }
