@@ -16,7 +16,7 @@ public class CalculosTest {
     @Test 
     void deseoSumarDosNumerosPositivos(){
         int resultado = sumar1.sumar(2,5);
-        assertEquals(9, resultado);
+        assertEquals(7, resultado);
     }
 
 }
