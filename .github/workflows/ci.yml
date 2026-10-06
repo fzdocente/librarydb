@@ -1,0 +1,30 @@
+name: Java CI con GitHub Actions
+
+# 1. Cuándo se ejecuta (Disparadores)
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+# 2. Qué va a hacer (Trabajos)
+jobs:
+  build-and-test:
+    runs-core: ubuntu-latest
+
+    steps:
+    # Paso A: Clonar el código del repositorio en el servidor de GitHub
+    - name: Copiar código del repositorio
+      uses: actions/checkout@v4
+
+    # Paso B: Configurar el entorno de Java (JDK)
+    - name: Configurar JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    # Paso C: Ejecutar las pruebas automáticamente
+    - name: Ejecutar pruebas con Maven
+      run: mvn test
