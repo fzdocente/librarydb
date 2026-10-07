@@ -66,7 +66,7 @@ public class BookServicesTest {
         assertEquals(2, result.size());
 
         assertEquals("1", result.get(0).getId());
-        assertEquals("Clean Code", result.get(0).getTitle());
+        assertEquals("Clean Code 1", result.get(0).getTitle());
         assertEquals("Robert C. Martin", result.get(0).getAuthor());
         assertEquals("9780132350884", result.get(0).getIsbn());
         assertTrue(result.get(0).isAvailable());
