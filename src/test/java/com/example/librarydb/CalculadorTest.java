@@ -16,7 +16,7 @@ public class CalculadorTest {
     @Test 
     void deseoSumar2NrosPositivos(){
         Double resultado = calcular.sumar(5.0,6.0);
-        assertEquals(17, resultado);
+        assertEquals(11, resultado);
     }
 
 }
